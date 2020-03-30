@@ -5,14 +5,24 @@ class Stoperica {
     this.pauzaDugme = pauzaDugme;
 
     this.startDugme.addEventListener("click", this.start);
+    this.pauzaDugme.addEventListener("click", this.pauza);
   }
 
-  start() {
-    console.log("Pocni tajmer");
-  }
+  start = () => {
+    this.tiktak();
+    this.interval = setInterval(this.tiktak, 1000);
+  };
+
+  pauza = () => {
+    clearInterval(this.interval);
+  };
+
+  tiktak = () => {
+    console.log("TIK TAK");
+  };
 }
 const vreme = document.querySelector("#vreme");
 const start = document.querySelector("#start");
 const pauza = document.querySelector("#pauza");
 
-new Stoperica(vreme, start, pauza);
+const stoperica = new Stoperica(vreme, start, pauza);
